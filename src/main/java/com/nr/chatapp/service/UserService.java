@@ -1,5 +1,7 @@
 package com.nr.chatapp.service;
 
+import com.nr.chatapp.dto.LoginResponse;
+import com.nr.chatapp.dto.LoginVo;
 import com.nr.chatapp.dto.UserVo;
 import com.nr.chatapp.model.User;
 
@@ -16,4 +18,6 @@ public interface UserService {
     List<User> getAllUsers();
 
     void deleteUserById(Integer userId);
+
+    LoginResponse login(LoginVo loginVo);
 }
