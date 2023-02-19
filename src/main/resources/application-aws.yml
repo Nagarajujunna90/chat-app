@@ -1,0 +1,23 @@
+server:
+  port: 5000
+jwt_secret: nagarajujunnaadwikaayanshswethavarunkumarsreen22221dsdsdsdsdsdsdsdsdsdsd
+
+spring:
+  datasource:
+    username: chatapp
+    password: chatapp$23v
+    url: jdbc:mysql://chat-app.cblywpkgn4z6.us-east-1.rds.amazonaws.com:3306/chat-app
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  security:
+    user:
+      name: user
+      password: user
+  main:
+    allow-bean-definition-overriding: true
+  config:
+    activate:
+      on-profile: aws

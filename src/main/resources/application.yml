@@ -1,20 +1,7 @@
 server:
-  port: 9090
-jwt_secret: nagarajujunnaadwikaayanshswethavarunkumarsreen22221dsdsdsdsdsdsdsdsdsdsd
-
+  error:
+    include-message: always
+    include-binding-errors: always
 spring:
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/chat-app
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    hibernate:
-      ddl-auto: update
-  security:
-    user:
-      name: user
-      password: user
-  main:
-      allow-bean-definition-overriding : true
+  profiles:
+    active: dev

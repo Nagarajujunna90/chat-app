@@ -4,6 +4,7 @@ import com.nr.chatapp.config.JwtUtil;
 import com.nr.chatapp.dto.LoginResponse;
 import com.nr.chatapp.dto.LoginVo;
 import com.nr.chatapp.dto.UserVo;
+import com.nr.chatapp.exception.UserNameAlreadyExist;
 import com.nr.chatapp.model.User;
 import com.nr.chatapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User addUser(UserVo userVo) {
-        User user = new User();
-        user.setPassword(passwordEncoder.encode(userVo.getPassword()));
-        userMapping(userVo, user);
-        return userRepository.save(user);
+        User byUserName = userRepository.findByUserName(userVo.getUserName());
+        if (byUserName == null) {
+            User user = new User();
+            user.setPassword(passwordEncoder.encode(userVo.getPassword()));
+            userMapping(userVo, user);
+            return userRepository.save(user);
+        } else {
+            throw new UserNameAlreadyExist();
+        }
     }
 
 

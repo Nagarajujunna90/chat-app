@@ -9,9 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:9090")
 public class UserController {
     @Autowired
     private final UserService userService;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<?> addUser(@RequestBody UserVo userVo) {
+    public ResponseEntity<?> addUser(@Valid  @RequestBody UserVo userVo) {
         return new ResponseEntity<>(userService.addUser(userVo), HttpStatus.CREATED);
     }
 
