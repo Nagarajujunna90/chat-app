@@ -4,6 +4,7 @@ import com.nr.chatapp.dto.LoginResponse;
 import com.nr.chatapp.dto.LoginVo;
 import com.nr.chatapp.dto.UserVo;
 import com.nr.chatapp.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +14,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
     @Autowired
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginVo loginVo) {
-        LoginResponse loginResponse = userService.login(loginVo);
-        return new ResponseEntity<>(loginResponse, HttpStatus.CREATED);
-    }
+    private  UserService userService;
 
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@Valid  @RequestBody UserVo userVo) {

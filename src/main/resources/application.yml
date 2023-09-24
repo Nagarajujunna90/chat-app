@@ -4,4 +4,4 @@ server:
     include-binding-errors: always
 spring:
   profiles:
-    active: dev
+    active: aws

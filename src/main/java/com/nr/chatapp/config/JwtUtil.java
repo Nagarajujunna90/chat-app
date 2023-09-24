@@ -25,7 +25,7 @@ public class JwtUtil {
         claims.put("userName", userName);
         return Jwts.builder().setClaims(claims).
                 setIssuedAt(new Date()).
-                setExpiration(new Date(System.currentTimeMillis() + 3600000)).
+                setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60)).
                 signWith(getKey(), SignatureAlgorithm.HS256).compact();
     }
 

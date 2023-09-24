@@ -28,6 +28,15 @@ public class GlobalException extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = UserNotFoundException.class)
+    public ResponseEntity<?> userNotFoundException(UserNotFoundException userNotFoundException) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse();
+        exceptionResponse.setMessage("Receiver details does not exists");
+        exceptionResponse.setLocalDateTime(LocalDateTime.now());
+        exceptionResponse.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers,
