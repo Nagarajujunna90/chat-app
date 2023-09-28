@@ -1,0 +1,22 @@
+version : 0.0
+
+files:
+  - source: /
+    target: /home/ec2-user/chat-app
+hooks:
+  BeforeInstall:
+    - location: server_clear.sh
+      timeout: 300
+      runas: ec2-user
+  AfterInstall:
+    - location: fix_privileges.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: server_start.sh
+      timeout: 20
+      runas: ec2-user
+  ApplicationStop:
+    - location: server_stop.sh
+      timeout: 20
+      runas: ec2-user
