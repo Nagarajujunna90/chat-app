@@ -19,8 +19,15 @@ public class UserController {
     @Autowired
     private  UserService userService;
 
+
+    @GetMapping("/test")
+    public String test() {
+        return "it is working ";
+    }
+
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@Valid  @RequestBody UserVo userVo) {
+        System.out.println("inside add user");
         return new ResponseEntity<>(userService.addUser(userVo), HttpStatus.CREATED);
     }
 
