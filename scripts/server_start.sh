@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd /home/ec2-user/chat-app
-sudo mvn clean install
+sudo mvn clean package
 sudo java -jar target/chat-app-0.0.1-SNAPSHOT.jar \
     *.jar > /dev/null 2> /dev/null < /dev/null &
 
